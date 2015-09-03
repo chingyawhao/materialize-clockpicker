@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="css/materialize.clockpicker.css" media="screen,projection"/>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/materialize.clockpicker.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <h1 class="col s12">Timepicker</h1>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="input_starttime">Time</label>
+            <input id="input_starttime" class="timepicker" type="text">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="input_endtime">Time</label>
+            <input id="input_endtime" class="timepicker" type="text">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="input_date">Date</label>
+            <input id="input_date" class="datepicker" type="date">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $('.timepicker').clockpicker({
+      placement: 'bottom',
+      align: 'left'
+    });
+    $('.datepicker').pickadate();
+  </script>
+</body>
+</html>
