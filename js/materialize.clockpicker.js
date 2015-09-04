@@ -434,6 +434,9 @@
 		}
 		// Get the time
 		var value = ((this.input.prop('value') || this.options['default'] || '') + '').split(':');
+		if(this.options.twelvehour && !(typeof value[1] === 'undefined')) {
+			value[1] = value[1].replace("AM", "").replace("PM", "");
+		}
 		if (value[0] === 'now') {
 			var now = new Date(+ new Date() + this.options.fromnow);
 			value = [
