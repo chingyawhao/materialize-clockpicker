@@ -215,13 +215,13 @@
 				tick = tickTpl.clone();
 				radian = i / 6 * Math.PI;
 				var inner = i > 0 && i < 13;
-				radius = inner ? innerRadius : outerRadius;
+				radius = inner ? innerRadius + 18 : outerRadius;
 				tick.css({
 					left: dialRadius + Math.sin(radian) * radius - tickRadius,
 					top: dialRadius - Math.cos(radian) * radius - tickRadius
 				});
 				if (inner) {
-					tick.css('font-size', '150%');
+					tick.css('font-size', '120%');
 				}
 				tick.html(i === 0 ? '00' : i);
 				hoursView.append(tick);
@@ -418,10 +418,12 @@
 		if (! this.isAppended) {
 			// Append popover to body
 			$body = this.popover.insertAfter(this.input);
-			this.amOrPm = 'PM';
-			this.amPmBlock.children('.am-button').removeClass('active');
-			this.amPmBlock.children('.pm-button').addClass('active');
-			$('.clockpicker-span-am-pm').empty().append('PM');
+			if(this.options.twelvehour) {
+				this.amOrPm = 'PM';
+				this.amPmBlock.children('.am-button').removeClass('active');
+				this.amPmBlock.children('.pm-button').addClass('active');
+				$('.clockpicker-span-am-pm').empty().append('PM');
+			}
 			// Reset position when resize
 			$win.on('resize.clockpicker' + this.id, function(){
 				if (self.isShown) {
