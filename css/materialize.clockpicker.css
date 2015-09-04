@@ -13,13 +13,13 @@
 
 
 .clockpicker-display {
-  font-size: 50px;
+  font-size: 70px;
   padding: 10px;
   padding-bottom: 0px;
   color: #b2dfdb;
 }
 .clockpicker-span-am-pm {
-  font-size: 20px;
+  font-size: 25px;
   color: #b2dfdb;
 }
 .clockpicker-span-hours, .clockpicker-span-minutes {

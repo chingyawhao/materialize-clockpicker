@@ -166,7 +166,7 @@
 					self.amOrPm = "AM";
 					self.amPmBlock.children('.pm-button').removeClass('active');
 					self.amPmBlock.children('.am-button').addClass('active');
-					$('.clockpicker-span-am-pm').empty().append('AM');
+					self.spanAmPm.empty().append('AM');
 				}).appendTo(this.amPmBlock);
 
 
@@ -175,7 +175,7 @@
 					self.amOrPm = 'PM';
 					self.amPmBlock.children('.am-button').removeClass('active');
 					self.amPmBlock.children('.pm-button').addClass('active');
-					$('.clockpicker-span-am-pm').empty().append('PM');
+					self.spanAmPm.empty().append('PM');
 				}).appendTo(this.amPmBlock);
 
 		}
@@ -201,7 +201,7 @@
 				tick = tickTpl.clone();
 				radian = i / 6 * Math.PI;
 				radius = outerRadius;
-				tick.css('font-size', '150%');
+				tick.css('font-size', '140%');
 				tick.css({
 					left: dialRadius + Math.sin(radian) * radius - tickRadius,
 					top: dialRadius - Math.cos(radian) * radius - tickRadius
@@ -237,7 +237,7 @@
 				left: dialRadius + Math.sin(radian) * outerRadius - tickRadius,
 				top: dialRadius - Math.cos(radian) * outerRadius - tickRadius
 			});
-			tick.css('font-size', '150%');
+			tick.css('font-size', '140%');
 			tick.html(leadingZero(i));
 			minutesView.append(tick);
 			tick.on(mousedownEvent, mousedown);
@@ -422,7 +422,7 @@
 				this.amOrPm = 'PM';
 				this.amPmBlock.children('.am-button').removeClass('active');
 				this.amPmBlock.children('.pm-button').addClass('active');
-				$('.clockpicker-span-am-pm').empty().append('PM');
+				this.spanAmPm.empty().append('PM');
 			}
 			// Reset position when resize
 			$win.on('resize.clockpicker' + this.id, function(){
