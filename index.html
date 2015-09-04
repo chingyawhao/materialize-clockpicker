@@ -37,10 +37,15 @@
     </div>
   </div>
   <script type="text/javascript">
-    $('.timepicker').clockpicker({
+    $('#input_starttime').clockpicker({
       placement: 'bottom',
       align: 'left',
       twelvehour: true
+    });
+    $('#input_endtime').clockpicker({
+      placement: 'bottom',
+      align: 'left',
+      twelvehour: false
     });
     $('.datepicker').pickadate();
   </script>

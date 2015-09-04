@@ -62,7 +62,7 @@
 	var dialRadius = 135,
 		outerRadius = 110,
 		// innerRadius = 80 on 12 hour clock
-		innerRadius = 54,
+		innerRadius = 80,
 		tickRadius = 20,
 		diameter = dialRadius * 2,
 		duration = transitionSupported ? 350 : 1;
@@ -215,7 +215,7 @@
 				tick = tickTpl.clone();
 				radian = i / 6 * Math.PI;
 				var inner = i > 0 && i < 13;
-				radius = inner ? innerRadius + 18 : outerRadius;
+				radius = inner ? innerRadius : outerRadius;
 				tick.css({
 					left: dialRadius + Math.sin(radian) * radius - tickRadius,
 					top: dialRadius - Math.cos(radian) * radius - tickRadius
