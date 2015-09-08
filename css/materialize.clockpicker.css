@@ -264,3 +264,56 @@
 .picker__footer .clockpicker-button:focus, .picker__footer .clockpicker-button:active {
   background-color: rgba(0, 150, 136, 0.25);
 }
+
+.darktheme .picker__box {
+  background-color: #212121;
+}
+.darktheme .picker__date-display {
+  background-color: transparent;
+}
+.darktheme .clockpicker-display {
+  color: white;
+}
+.darktheme .clockpicker-span-am-pm {
+  color: white;
+}
+.darktheme .clockpicker-span-hours.text-primary, .darktheme .clockpicker-span-minutes.text-primary, .darktheme #click-am.text-primary, .darktheme #click-pm.text-primary {
+  color: #ff4081;
+}
+.darktheme .clockpicker-plate {
+	background-color: transparent;
+}
+.darktheme .clockpicker-tick {
+	color: white;
+  background-color: rgba(255, 64, 129, 0);
+}
+.darktheme .clockpicker-tick.active, .darktheme .clockpicker-tick:hover {
+	background-color: rgba(255, 64, 129, 0.25);
+}
+.darktheme .clockpicker-canvas-bearing {
+	fill: white;
+}
+.darktheme .clockpicker-canvas-fg {
+  fill: rgba(255, 64, 129, 0);
+}
+.darktheme .clockpicker-canvas-fg.active {
+  fill: rgba(255, 64, 129, 0.5);
+}
+.darktheme .clockpicker-canvas-bg {
+	fill: rgba(255, 64, 129, 0.25);
+}
+.darktheme .clockpicker-canvas-bg-trans {
+	fill: rgba(255, 64, 129, 0.25);
+}
+.darktheme .clockpicker-canvas line {
+	stroke: rgba(255, 64, 129, 0.25);
+}
+.darktheme button {
+  color: white;
+}
+.darktheme .btn-floating.btn-flat:active, .darktheme .btn-floating.btn-flat.active {
+  background-color: rgba(255, 64, 129, 0.25);
+}
+.darktheme .picker__footer .clockpicker-button:focus, .darktheme .picker__footer .clockpicker-button:active {
+  background-color: rgba(255, 64, 129, 0.25);
+}

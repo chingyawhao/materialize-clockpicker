@@ -142,28 +142,18 @@
 		// Setup for for 12 hour clock if option is selected
 		if (options.twelvehour) {
 
-			var  amPmButtonsTemplate = ['<div class="clockpicker-am-pm-block">',
-				'<button type="button" class="btn-floating btn-flat clockpicker-button clockpicker-am-button">',
-				'AM</button>',
-				'<button type="button" class="btn-floating btn-flat clockpicker-button clockpicker-pm-button">',
-				'PM</button>',
-				'</div>'].join('');
+			var  amPmButtonsTemplate = [
+				'<div class="clockpicker-am-pm-block">',
+					'<button type="button" class="btn-floating btn-flat clockpicker-button clockpicker-am-button">',
+						'AM',
+					'</button>',
+					'<button type="button" class="btn-floating btn-flat clockpicker-button clockpicker-pm-button">',
+						'PM',
+					'</button>',
+				'</div>'
+			].join('');
 
 			var amPmButtons = $(amPmButtonsTemplate);
-			//amPmButtons.appendTo(plate);
-
-			////Not working b/c they are not shown when this runs
-			//$('clockpicker-am-button')
-			//    .on("click", function() {
-			//        self.amOrPm = "AM";
-			//        $('.clockpicker-span-am-pm').empty().append('AM');
-			//    });
-			//
-			//$('clockpicker-pm-button')
-			//    .on("click", function() {
-			//         self.amOrPm = "PM";
-			//        $('.clockpicker-span-am-pm').empty().append('PM');
-			//    });
 
 			if(!options.ampmclickable) {
 				$('<button type="button" class="btn-floating btn-flat clockpicker-button am-button">' + "AM" + '</button>').on("click", function() {
@@ -192,6 +182,10 @@
 					self.amOrPm = 'PM';
 				}).appendTo(this.spanAmPm);
 			}
+		}
+
+		if(options.darktheme) {
+			popover.addClass('darktheme');
 		}
 
 			// If autoclose is not setted, append a button
@@ -393,6 +387,7 @@
 		donetext: 'Done',      // done button text
 		autoclose: false,      // auto close when minute is selected
 		ampmclickable: false,  // set am/pm button on itself
+		darktheme: false,			 // set to dark theme
 		twelvehour: true,      // change to 12 hour AM/PM clock from 24 hour
 		vibrate: true          // vibrate the device when dragging clock hand
 	};
