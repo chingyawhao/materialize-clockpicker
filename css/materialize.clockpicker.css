@@ -13,13 +13,27 @@
 
 
 .clockpicker-display {
+  vertical-align: middle;
+  display: inline-block;
+  margin: auto;
+  height: 85px;
   font-size: 70px;
   padding: 10px;
   padding-bottom: 0px;
   color: #b2dfdb;
 }
+.clockpicker-display-column {
+  float: left;
+}
+.clockpicker-display-am-pm {
+  padding-left: 5px;
+  vertical-align: bottom;
+  height: 85px;
+}
 .clockpicker-span-am-pm {
-  font-size: 25px;
+  display: inline-block;
+  font-size: 23px;
+  line-height: 25px;
   color: #b2dfdb;
 }
 .clockpicker-span-hours, .clockpicker-span-minutes {
@@ -101,7 +115,10 @@
     transform: scale3d(1, 1, 1);
   }
 }
-.clockpicker-span-hours.text-primary, .clockpicker-span-minutes.text-primary {
+#click-am, #click-pm {
+  cursor: pointer;
+}
+.clockpicker-span-hours.text-primary, .clockpicker-span-minutes.text-primary, #click-am.text-primary, #click-pm.text-primary {
   -webkit-animation-name: pulse;
           animation-name: pulse;
   color: white;
@@ -197,7 +214,10 @@
 }
 .clockpicker-canvas-fg {
 	stroke: none;
-  fill: rgba(0, 77, 64, 0.25);
+  fill: rgba(0, 77, 64, 0);
+}
+.clockpicker-canvas-fg.active {
+  fill: rgba(0, 77, 64, 0.5);
 }
 .clockpicker-canvas-bg {
 	stroke: none;

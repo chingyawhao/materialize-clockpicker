@@ -76,10 +76,14 @@
 						'<div class="picker__box">',
 							'<div class="picker__date-display">',
 								'<div class="clockpicker-display">',
-									'<span class="clockpicker-span-hours text-primary"></span>',
-									':',
-									'<span class="clockpicker-span-minutes"></span>',
-									'<span class="clockpicker-span-am-pm"></span>',
+									'<div class="clockpicker-display-column">',
+										'<span class="clockpicker-span-hours text-primary"></span>',
+										':',
+										'<span class="clockpicker-span-minutes"></span>',
+									'</div>',
+									'<div class="clockpicker-display-column clockpicker-display-am-pm">',
+										'<div class="clockpicker-span-am-pm"></div>',
+									'</div>',
 								'</div>',
 							'</div>',
 							'<div class="picker__calendar-container">',
@@ -161,23 +165,33 @@
 			//        $('.clockpicker-span-am-pm').empty().append('PM');
 			//    });
 
-			$('<button type="button" class="btn-floating btn-flat clockpicker-button am-button">' + "AM" + '</button>')
-				.on("click", function() {
+			if(!options.ampmclickable) {
+				$('<button type="button" class="btn-floating btn-flat clockpicker-button am-button">' + "AM" + '</button>').on("click", function() {
 					self.amOrPm = "AM";
 					self.amPmBlock.children('.pm-button').removeClass('active');
 					self.amPmBlock.children('.am-button').addClass('active');
 					self.spanAmPm.empty().append('AM');
 				}).appendTo(this.amPmBlock);
-
-
-			$('<button type="button" class="btn-floating btn-flat clockpicker-button pm-button">' + "PM" + '</button>')
-				.on("click", function() {
+				$('<button type="button" class="btn-floating btn-flat clockpicker-button pm-button">' + "PM" + '</button>').on("click", function() {
 					self.amOrPm = 'PM';
 					self.amPmBlock.children('.am-button').removeClass('active');
 					self.amPmBlock.children('.pm-button').addClass('active');
 					self.spanAmPm.empty().append('PM');
 				}).appendTo(this.amPmBlock);
-
+			}
+			else {
+				this.spanAmPm.empty();
+				$('<div id="click-am">AM</div>').on("click", function() {
+					self.spanAmPm.children('#click-am').addClass("text-primary");
+					self.spanAmPm.children('#click-pm').removeClass("text-primary");
+					self.amOrPm = "AM";
+				}).appendTo(this.spanAmPm);
+				$('<div id="click-pm">PM</div>').on("click", function() {
+					self.spanAmPm.children('#click-pm').addClass("text-primary");
+					self.spanAmPm.children('#click-am').removeClass("text-primary");
+					self.amOrPm = 'PM';
+				}).appendTo(this.spanAmPm);
+			}
 		}
 
 			// If autoclose is not setted, append a button
@@ -374,12 +388,13 @@
 
 	// Default options
 	ClockPicker.DEFAULTS = {
-		'default': '',       // default time, 'now' or '13:14' e.g.
-		fromnow: 0,          // set default time to * milliseconds from now (using with default = 'now')
-		donetext: 'Done',    // done button text
-		autoclose: false,    // auto close when minute is selected
-		twelvehour: true, // change to 12 hour AM/PM clock from 24 hour
-		vibrate: true        // vibrate the device when dragging clock hand
+		'default': '',         // default time, 'now' or '13:14' e.g.
+		fromnow: 0,            // set default time to * milliseconds from now (using with default = 'now')
+		donetext: 'Done',      // done button text
+		autoclose: false,      // auto close when minute is selected
+		ampmclickable: false,  // set am/pm button on itself
+		twelvehour: true,      // change to 12 hour AM/PM clock from 24 hour
+		vibrate: true          // vibrate the device when dragging clock hand
 	};
 
 	// Show or hide popover
@@ -420,12 +435,18 @@
 			$body = this.popover.insertAfter(this.input);
 			if(this.options.twelvehour) {
 				this.amOrPm = 'PM';
-				this.amPmBlock.children('.am-button').removeClass('active');
-				this.amPmBlock.children('.pm-button').addClass('active');
-				this.spanAmPm.empty().append('PM');
+				if(!this.options.ampmclickable) {
+					this.amPmBlock.children('.am-button').removeClass('active');
+					this.amPmBlock.children('.pm-button').addClass('active');
+					this.spanAmPm.empty().append('PM');
+				}
+				else {
+					this.spanAmPm.children('#click-pm').addClass("text-primary");
+					this.spanAmPm.children('#click-am').removeClass("text-primary");
+				}
 			}
 			// Reset position when resize
-			$win.on('resize.clockpicker' + this.id, function(){
+			$win.on('resize.clockpicker' + this.id, function() {
 				if (self.isShown) {
 					self.locate();
 				}
@@ -547,9 +568,9 @@
 			radius = inner ? innerRadius : outerRadius,
 			value;
 
-			if (options.twelvehour) {
-				radius = outerRadius;
-			}
+		if (options.twelvehour) {
+			radius = outerRadius;
+		}
 
 		// Radian should in range [0, 2PI]
 		if (radian < 0) {
@@ -589,6 +610,16 @@
 				if (value === 60) {
 					value = 0;
 				}
+			}
+		}
+		if (isHours) {
+			this.fg.setAttribute('class', 'clockpicker-canvas-fg');
+		} else {
+			if(value % 5 == 0) {
+				this.fg.setAttribute('class', 'clockpicker-canvas-fg');
+			}
+			else {
+				this.fg.setAttribute('class', 'clockpicker-canvas-fg active');
 			}
 		}
 
