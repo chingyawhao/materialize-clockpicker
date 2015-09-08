@@ -1,5 +1,5 @@
-![Image of Materialize Clock Light](images/material-clock-light.png?raw=true "Materialize Clock Light")
-![Image of Materialize Clock Dark](images/material-clock-dark.png?raw=true "Materialize Clock Dark")
+![Image of Materialize Clock Light](https://github.com/chingyawhao/materialize-clockpicker/blob/master/images/material-clock-light.PNG)
+![Image of Materialize Clock Dark](https://github.com/chingyawhao/materialize-clockpicker/blob/master/images/material-clock-dark.PNG)
 
 ## Description:
 This is a materialize clockpicker designed as an addition to http://materializecss.com/
