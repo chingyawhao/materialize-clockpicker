@@ -254,14 +254,20 @@
   box-shadow: none;
   background-color: transparent;
 }
-.btn-floating.btn-flat:active, .btn-floating.btn-flat.active {
+.btn-floating.btn-flat.active {
   background-color: rgba(0, 150, 136, 0.25);
+}
+.btn-floating.btn-flat:active {
+  background-color: rgba(0, 150, 136, 0.5);
 }
 .picker__footer .clockpicker-button {
   margin: auto;
   margin-top: 15px;
 }
-.picker__footer .clockpicker-button:focus, .picker__footer .clockpicker-button:active {
+.picker__footer .clockpicker-button:focus {
+  background-color: transparent;
+}
+.picker__footer .clockpicker-button:active {
   background-color: rgba(0, 150, 136, 0.25);
 }
 
@@ -311,9 +317,12 @@
 .darktheme button {
   color: white;
 }
-.darktheme .btn-floating.btn-flat:active, .darktheme .btn-floating.btn-flat.active {
+.darktheme .btn-floating.btn-flat.active {
   background-color: rgba(255, 64, 129, 0.25);
 }
-.darktheme .picker__footer .clockpicker-button:focus, .darktheme .picker__footer .clockpicker-button:active {
+.darktheme .btn-floating.btn-flat:active {
+  background-color: rgba(255, 64, 129, 0.5);
+}
+.darktheme .picker__footer .clockpicker-button:active {
   background-color: rgba(255, 64, 129, 0.25);
 }

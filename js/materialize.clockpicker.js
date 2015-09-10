@@ -10,8 +10,7 @@
 ;(function(){
 	var $ = window.jQuery,
 		$win = $(window),
-		$doc = $(document),
-		$body;
+		$doc = $(document);
 
 	// Can I use inline svg ?
 	var svgNS = 'http://www.w3.org/2000/svg',
@@ -277,7 +276,7 @@
 
 			// Set cursor style of body after 200ms
 			var movingTimer = setTimeout(function(){
-				$body.addClass('clockpicker-moving');
+				self.popover.addClass('clockpicker-moving');
 			}, 200);
 
 			// Place the canvas to top
@@ -326,7 +325,7 @@
 
 				// Reset cursor style of body
 				clearTimeout(movingTimer);
-				$body.removeClass('clockpicker-moving');
+				self.popover.removeClass('clockpicker-moving');
 
 				// Unbind mousemove event
 				$doc.off(mousemoveEvent);
@@ -427,7 +426,7 @@
 		this.input.addClass('picker__input picker__input--active');
 		if (! this.isAppended) {
 			// Append popover to body
-			$body = this.popover.insertAfter(this.input);
+			this.popover.insertAfter(this.input);
 			if(this.options.twelvehour) {
 				this.amOrPm = 'PM';
 				if(!this.options.ampmclickable) {
