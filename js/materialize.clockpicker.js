@@ -363,9 +363,8 @@
 	}
 
 	function raiseCallback(callbackFunction) {
-		if (callbackFunction && typeof callbackFunction === "function") {
+		if(callbackFunction && typeof callbackFunction === "function")
 			callbackFunction();
-		}
 	}
 
 	// Default options
@@ -381,24 +380,21 @@
 	};
 
 	// Show or hide popover
-	ClockPicker.prototype.toggle = function(){
+	ClockPicker.prototype.toggle = function() {
 		this[this.isShown ? 'hide' : 'show']();
 	};
 
 	// Set popover position
-	ClockPicker.prototype.locate = function(){
+	ClockPicker.prototype.locate = function() {
 		var element = this.element,
 				popover = this.popover,
 				offset = element.offset(),
 				width = element.outerWidth(),
 				height = element.outerHeight(),
 				align = this.options.align,
-				styles = {},
 				self = this;
 
 		popover.show();
-
-		popover.css(styles);
 	};
 
 	// Show popover
@@ -491,15 +487,15 @@
 		raiseCallback(this.options.afterHide);
 	};
 	// Toggle to hours or minutes view
-	ClockPicker.prototype.toggleView = function(view, delay){
+	ClockPicker.prototype.toggleView = function(view, delay) {
 		var raiseAfterHourSelect = false;
 		if (view === 'minutes' && $(this.hoursView).css("visibility") === "visible") {
 			raiseCallback(this.options.beforeHourSelect);
 			raiseAfterHourSelect = true;
 		}
 		var isHours = view === 'hours',
-			nextView = isHours ? this.hoursView : this.minutesView,
-			hideView = isHours ? this.minutesView : this.hoursView;
+				nextView = isHours ? this.hoursView : this.minutesView,
+				hideView = isHours ? this.minutesView : this.hoursView;
 		this.currentView = view;
 
 		this.spanHours.toggleClass('text-primary', isHours);
@@ -514,56 +510,53 @@
 
 		// After transitions ended
 		clearTimeout(this.toggleViewTimer);
-		this.toggleViewTimer = setTimeout(function(){
+		this.toggleViewTimer = setTimeout(function() {
 			hideView.css('visibility', 'hidden');
 		}, duration);
 
-		if (raiseAfterHourSelect) {
+		if (raiseAfterHourSelect)
 			raiseCallback(this.options.afterHourSelect);
-		}
 	};
 
 	// Reset clock hand
-	ClockPicker.prototype.resetClock = function(delay){
+	ClockPicker.prototype.resetClock = function(delay) {
 		var view = this.currentView,
-			value = this[view],
-			isHours = view === 'hours',
-			unit = Math.PI / (isHours ? 6 : 30),
-			radian = value * unit,
-			radius = isHours && value > 0 && value < 13 ? innerRadius : outerRadius,
-			x = Math.sin(radian) * radius,
-			y = - Math.cos(radian) * radius,
-			self = this;
-		if (svgSupported && delay) {
+				value = this[view],
+				isHours = view === 'hours',
+				unit = Math.PI / (isHours ? 6 : 30),
+				radian = value * unit,
+				radius = isHours && value > 0 && value < 13 ? innerRadius : outerRadius,
+				x = Math.sin(radian) * radius,
+				y = - Math.cos(radian) * radius,
+				self = this;
+
+		if(svgSupported && delay) {
 			self.canvas.addClass('clockpicker-canvas-out');
 			setTimeout(function(){
 				self.canvas.removeClass('clockpicker-canvas-out');
 				self.setHand(x, y);
 			}, delay);
-		} else {
+		} else
 			this.setHand(x, y);
-		}
 	};
 
 	// Set clock hand to (x, y)
-	ClockPicker.prototype.setHand = function(x, y, roundBy5, dragging){
+	ClockPicker.prototype.setHand = function(x, y, roundBy5, dragging) {
 		var radian = Math.atan2(x, - y),
-			isHours = this.currentView === 'hours',
-			unit = Math.PI / (isHours || roundBy5 ? 6 : 30),
-			z = Math.sqrt(x * x + y * y),
-			options = this.options,
-			inner = isHours && z < (outerRadius + innerRadius) / 2,
-			radius = inner ? innerRadius : outerRadius,
-			value;
+				isHours = this.currentView === 'hours',
+				unit = Math.PI / (isHours || roundBy5? 6 : 30),
+				z = Math.sqrt(x * x + y * y),
+				options = this.options,
+				inner = isHours && z < (outerRadius + innerRadius) / 2,
+				radius = inner ? innerRadius : outerRadius,
+				value;
 
-		if (options.twelvehour) {
+		if (options.twelvehour)
 			radius = outerRadius;
-		}
 
 		// Radian should in range [0, 2PI]
-		if (radian < 0) {
+		if (radian < 0)
 			radian = Math.PI * 2 + radian;
-		}
 
 		// Get the round value
 		value = Math.round(radian / unit);
@@ -572,25 +565,26 @@
 		radian = value * unit;
 
 		// Correct the hours or minutes
-		if (options.twelvehour) {
-			if (isHours)
-				if (value === 0)
+		if(options.twelvehour) {
+			if(isHours) {
+				if(value === 0)
 					value = 12;
-			else {
-				if (roundBy5)
+			} else {
+				if(roundBy5) {
 					value *= 5;
-				if (value === 60)
+				}
+				if(value === 60)
 					value = 0;
 			}
 		} else {
-			if (isHours) {
-				if (value === 12)
+			if(isHours) {
+				if(value === 12)
 					value = 0;
 				value = inner ? (value === 0 ? 12 : value) : value === 0 ? 0 : value + 12;
 			} else {
-				if (roundBy5)
+				if(roundBy5)
 					value *= 5;
-				if (value === 60)
+				if(value === 60)
 					value = 0;
 			}
 		}
@@ -658,19 +652,18 @@
 		this.label.addClass('active');
 
 		var last = this.input.prop('value'),
-			value = leadingZero(this.hours) + ':' + leadingZero(this.minutes);
-		if  (this.options.twelvehour) {
+				value = leadingZero(this.hours) + ':' + leadingZero(this.minutes);
+		if (this.options.twelvehour)
 			value = value + this.amOrPm;
-		}
 
 		this.input.prop('value', value);
-		if (value !== last) {
+		if(value !== last) {
 			this.input.triggerHandler('change');
-			if (! this.isInput)
+			if(!this.isInput)
 				this.element.trigger('change');
 		}
 
-		if (this.options.autoclose)
+		if(this.options.autoclose)
 			this.input.trigger('blur');
 
 		raiseCallback(this.options.afterDone);
