@@ -570,9 +570,8 @@
 				if(value === 0)
 					value = 12;
 			} else {
-				if(roundBy5) {
+				if(roundBy5)
 					value *= 5;
-				}
 				if(value === 60)
 					value = 0;
 			}
@@ -682,7 +681,7 @@
 	};
 
 	// Extends $.fn.clockpicker
-	$.fn.clockpicker = function(option){
+	$.fn.pickatime = function(option){
 		var args = Array.prototype.slice.call(arguments, 1);
 		return this.each(function(){
 			var $this = $(this),
