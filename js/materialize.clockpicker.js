@@ -181,6 +181,8 @@
 				}).appendTo(this.spanAmPm);
 			}
 		}
+		//force input to type ( disable type=time )
+		input.attr('type','text');
 
 		if(options.darktheme)
 			popover.addClass('darktheme');

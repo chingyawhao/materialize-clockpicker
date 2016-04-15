@@ -1,50 +1,154 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
-  <link type="text/css" rel="stylesheet" href="css/materialize.clockpicker.css" media="screen,projection"/>
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.min.js"></script>
-  <script src="js/materialize.clockpicker.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link type="text/css" rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="dist/css/materialize.clockpicker.css" media="screen,projection" />
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/Materialize/dist/js/materialize.min.js"></script>
+    <script src="dist/js/materialize.clockpicker.js"></script>
+    <title>Materialize Timepicker</title>
 </head>
+
 <body>
-  <div class="container">
-    <div class="row">
-      <h1 class="col s12">Timepicker</h1>
-      <form class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <label for="input_starttime">Time</label>
-            <input id="input_starttime" class="timepicker" type="text">
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <label for="input_endtime">Time</label>
-            <input id="input_endtime" class="timepicker" type="text">
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <label for="input_date">Date</label>
-            <input id="input_date" class="datepicker" type="date">
-          </div>
-        </div>
-      </form>
+    <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Materialize Timepicker</a>
     </div>
-  </div>
-  <script type="text/javascript">
-    $('#input_starttime').pickatime({
-      twelvehour: true
+  </nav>
+    <div class="container">
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="timepicker_ampm">Time am/pm</label>
+                        <input id="timepicker_ampm" class="timepicker" type="time">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="timepicker_ampm_dark">Time am/pm ( dark theme )</label>
+                        <input id="timepicker_ampm_dark" class="timepicker" type="time">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="timepicker_24">Time 24h </label>
+                        <input id="timepicker_24" class="timepicker" type="time">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="timepicker_24_dark">Time 24h ( dark theme ) </label>
+                        <input id="timepicker_24_dark" class="timepicker" type="time">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="timepicker_default">Time options - default: 'now' </label>
+                        <input id="timepicker_default" class="timepicker" type="time">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="timepicker_fromnow">Time options - fromnow: 5 * 1000 * 60 </label>
+                        <input id="timepicker_fromnow" class="timepicker" type="time">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="timepicker_donetext">Time options - donetext: 'set'</label>
+                        <input id="timepicker_donetext" class="timepicker" type="time">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="timepicker_autoclose">Time options - autoclose: true</label>
+                        <input id="timepicker_autoclose" class="timepicker" type="time">
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="timepicker_ampmclickable">Time options - ampmclickable: true</label>
+                        <input id="timepicker_ampmclickable" class="timepicker" type="time">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="timepicker_ampmclickable_dark">Time options - ampmclickable: true ( dark theme ) </label>
+                        <input id="timepicker_ampmclickable_dark" class="timepicker" type="time">
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="timepicker_vibrate">Time options - vibrate: true</label>
+                        <input id="timepicker_vibrate" class="timepicker" type="time">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+    //am/pm
+    $('#timepicker_ampm').pickatime();
+    $('#timepicker_ampm_dark').pickatime({
+      darktheme: true
     });
-    $('#input_endtime').pickatime({
+    //24
+    $('#timepicker_24').pickatime({
+      twelvehour: false
+    });
+    $('#timepicker_24_dark').pickatime({
       darktheme: true,
       twelvehour: false
     });
-    $('.datepicker').pickadate();
-  </script>
+    //default
+    $('#timepicker_default').pickatime({
+      default: 'now'
+    });
+    //fromnow
+    $('#timepicker_fromnow').pickatime({
+      default: 'now',
+      fromnow: 5 * 1000 * 60
+    });
+    //donetext
+    $('#timepicker_donetext').pickatime({
+      donetext: 'set'
+    });
+    //autoclose
+    $('#timepicker_autoclose').pickatime({
+      autoclose: true
+    });
+    //ampmclickable
+    $('#timepicker_ampmclickable').pickatime({
+      ampmclickable: true
+    });
+     $('#timepicker_ampmclickable_dark').pickatime({
+      ampmclickable: true,
+      darktheme: true
+    });
+    //vibrate
+    $('#timepicker_vibrate').pickatime({
+      vibrate: true
+    });
+    </script>
 </body>
+
 </html>

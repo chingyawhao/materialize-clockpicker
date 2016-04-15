@@ -1,0 +1,92 @@
+/*!
+ * ClockPicker v0.0.7 for jQuery (http://weareoutman.github.io/clockpicker/)
+ * Copyright 2014 Wang Shenwei.
+ * Licensed under MIT (https://github.com/weareoutman/clockpicker/blob/gh-pages/LICENSE)
+ *
+ * Further modified
+ * Copyright 2015 Ching Yaw Hao.
+ *
+ * Bootstrap v3.1.1 (http://getbootstrap.com)
+ * Copyright 2011-2014 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+.darktheme {
+    .picker__box {
+        background-color: #212121;
+    }
+
+    .picker__date-display {
+        background-color: transparent;
+    }
+
+    .clockpicker-display {
+        color: white;
+    }
+
+    .clockpicker-span-am-pm {
+        color: white;
+    }
+
+    .clockpicker-span-hours,
+    .clockpicker-span-minutes,
+    #click-am,
+    #click-pm {
+        &.text-primary {
+            color: #ff4081;
+        }
+    }
+
+    .clockpicker-plate {
+        background-color: transparent;
+    }
+
+    .clockpicker-tick {
+        color: white;
+        background-color: rgba(255, 64, 129, 0);
+    }
+
+    .clockpicker-tick.active,
+    .clockpicker-tick:hover {
+        background-color: rgba(255, 64, 129, 0.25);
+    }
+
+    .clockpicker-canvas-bearing {
+        fill: white;
+    }
+
+    .clockpicker-canvas-fg {
+        fill: rgba(255, 64, 129, 0);
+    }
+
+    .clockpicker-canvas-fg.active {
+        fill: rgba(255, 64, 129, 0.5);
+    }
+
+    .clockpicker-canvas-bg {
+        fill: rgba(255, 64, 129, 0.25);
+    }
+
+    .clockpicker-canvas-bg-trans {
+        fill: rgba(255, 64, 129, 0.25);
+    }
+
+    .clockpicker-canvas line {
+        stroke: rgba(255, 64, 129, 0.25);
+    }
+
+    button {
+        color: white;
+    }
+
+    .btn-floating.btn-flat.active {
+        background-color: rgba(255, 64, 129, 0.25);
+    }
+
+    .btn-floating.btn-flat:active {
+        background-color: rgba(255, 64, 129, 0.5);
+    }
+
+    .picker__footer .clockpicker-button:active {
+        background-color: rgba(255, 64, 129, 0.25);
+    }
+}
