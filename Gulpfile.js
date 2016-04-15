@@ -20,7 +20,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('js', function () {
-    return gulp.src('./js/materialize.clockpicker.js')
+    return gulp.src('./src/js/materialize.clockpicker.js')
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(gulp.dest('./dist/js'))
