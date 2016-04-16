@@ -3,6 +3,14 @@ This is a materialize clockpicker designed as an addition to http://materializec
 
 Most source codes are taken from https://github.com/weareoutman/clockpicker
 
+## Install:
+
+### bower
+`bower install materialize-clockpicker --save`
+
+### npm
+`npm i materialize-clockpicker --save`
+
 ## Options:
 Here are some options and their defaults:
 ```
@@ -19,3 +27,12 @@ vibrate: true          // vibrate the device when dragging clock hand
 ## Screenshots:
 ![Image of Materialize Clock Light](https://github.com/chingyawhao/materialize-clockpicker/blob/master/images/material-clock-light.PNG)
 ![Image of Materialize Clock Dark](https://github.com/chingyawhao/materialize-clockpicker/blob/master/images/material-clock-dark.PNG)
+
+
+## Developing:
+```
+npm i gulp bower -g
+npm install
+bower install
+gulp watch
+```

@@ -1,0 +1,16 @@
+//box
+$clockpicker-picker-box-background: #fff !default;
+$clockpicker-picker-box-date-display-background-color: color("teal", "lighten-1") !default;
+$clockpicker-primary-color: color("teal", "lighten-4") !default;
+//tick
+$clockpicker-tick-background-color: rgba(color("teal", "base"), 0) !default;
+$clockpicker-tick-background-color-active: rgba(color("teal", "base"), 0.25) !default;
+$clockpicker-tick-color: #666 !default;
+//canvas
+$clockpicker-canvas-bearing-fill: rgba(color("teal", "darken-4"), 0.75) !default;
+$clockpicker-canvas-fg-fill: color("teal", "darken-4") !default;
+$clockpicker-canvas-bg-fill: rgba(color("teal", "base"), 0.25) !default;
+$clockpicker-canvas-bg-stroke: $clockpicker-canvas-bg-fill !default;
+//buttons
+$clockpicker-button-background-color: color("teal", "base") !default;
+$clockpicker-button-color: $button-flat-color !default;
