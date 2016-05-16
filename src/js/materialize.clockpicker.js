@@ -417,7 +417,7 @@
 		$(document.body).css('overflow', 'hidden');
 		if (!this.isAppended) {
 			// Append popover to body
-			this.popover.insertAfter(this.input);
+			this.popover.appendTo(document.body);
 			if(this.options.twelvehour) {
 				this.amOrPm = 'PM';
 				if(!this.options.ampmclickable) {

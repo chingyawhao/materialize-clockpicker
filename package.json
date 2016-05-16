@@ -1,6 +1,6 @@
 {
   "name": "materialize-clockpicker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A materialize clockpicker",
   "main": "js/materialize.clockpicker.js",
   "repository": {
@@ -12,7 +12,7 @@
     "materialize",
     "clockpicker"
   ],
-  "author": "chingyawhao",
+  "author": "chingyawhao <chingyawhao14@gmail.com> (https://github.com/chingyawhao)",
   "contributors": [
     "victor-perez <vpjs@victor-perez.nl> (https://github.com/victor-perez)"
   ],
