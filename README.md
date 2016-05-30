@@ -36,3 +36,34 @@ npm install
 bower install
 gulp watch
 ```
+
+
+## Getting started
+
+### Basic setup
+
+1. Make sure you have materialize css (including their JavaScript files): http://materializecss.com/
+
+2. Install this package via npm or bower. Alternatively you can also download the [source](https://github.com/chingyawhao/materialize-clockpicker/tree/master/src) files and add them to your project manually.
+
+3. Create an input field in your html code like the following:
+
+  ```
+  <div class="input-field col s12">
+      <label for="timepicker">Time</label>
+      <input id="timepicker" class="timepicker" type="time">
+  </div>
+  ```
+
+4. Add the Javascript trigger with the corresponding [options](https://github.com/chingyawhao/materialize-clockpicker#options)
+
+  ```
+  <script>
+    $('#timepicker').pickatime({
+      autoclose: false,
+      twelvehour: false
+    });
+  </script>
+  ```
+
+You can trigger the clock either by ID's or classes (useful if you have several clocks on one page).
