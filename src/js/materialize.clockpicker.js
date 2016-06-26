@@ -398,9 +398,24 @@
 
 		popover.show();
 	};
-
 	// Show popover
 	ClockPicker.prototype.show = function(e){
+		this.setAMorPM = function(option) {
+			var active = option;
+			var inactive = (option == "pm"? "am":"pm");
+			if(this.options.twelvehour) {
+				this.amOrPm = active.toUpperCase();
+				if(!this.options.ampmclickable) {
+					this.amPmBlock.children('.' + inactive + '-button').removeClass('active');
+					this.amPmBlock.children('.' + active + '-button').addClass('active');
+					this.spanAmPm.empty().append(this.amOrPm);
+				}
+				else {
+					this.spanAmPm.children('#click-' + active + '').addClass("text-primary");
+					this.spanAmPm.children('#click-' + inactive + '').removeClass("text-primary");
+				}
+			}
+		}
 		// Not show again
 		if (this.isShown) {
 			return;
@@ -416,20 +431,12 @@
 		this.input.addClass('picker__input picker__input--active');
 		$(document.body).css('overflow', 'hidden');
 		if (!this.isAppended) {
-			// Append popover to body
-			this.popover.appendTo(document.body);
-			if(this.options.twelvehour) {
-				this.amOrPm = 'PM';
-				if(!this.options.ampmclickable) {
-					this.amPmBlock.children('.am-button').removeClass('active');
-					this.amPmBlock.children('.pm-button').addClass('active');
-					this.spanAmPm.empty().append('PM');
-				}
-				else {
-					this.spanAmPm.children('#click-pm').addClass("text-primary");
-					this.spanAmPm.children('#click-am').removeClass("text-primary");
-				}
-			}
+			// Append popover to options.container
+			if(this.options.hasOwnProperty('container'))
+				this.popover.appendTo(this.options.container);
+			else
+				this.popover.insertAfter(this.input);
+			this.setAMorPM("pm");
 			// Reset position when resize
 			$win.on('resize.clockpicker' + this.id, function() {
 				if (self.isShown) {
@@ -441,10 +448,18 @@
 		// Get the time
 		var value = ((this.input.prop('value') || this.options['default'] || '') + '').split(':');
 		if(this.options.twelvehour && !(typeof value[1] === 'undefined')) {
+			if(value[1].includes('AM'))
+				this.setAMorPM("am");
+			else
+				this.setAMorPM("pm");
 			value[1] = value[1].replace("AM", "").replace("PM", "");
 		}
 		if (value[0] === 'now') {
 			var now = new Date(+ new Date() + this.options.fromnow);
+			if (now.getHours() >= 12)
+				this.setAMorPM("pm");
+			else
+				this.setAMorPM("am");
 			value = [
 				now.getHours(),
 				now.getMinutes()
