@@ -2,7 +2,7 @@
   "name": "materialize-clockpicker",
   "version": "1.0.1",
   "description": "A materialize clockpicker",
-  "main": "js/materialize.clockpicker.js",
+  "main": "./dist/js/materialize.clockpicker.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:chingyawhao/materialize-clockpicker.git"
