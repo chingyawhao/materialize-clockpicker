@@ -28,6 +28,6 @@
     "tests"
   ],
   "dependencies": {
-    "Materialize": "materialize#~0.97.6"
+    "materialize": "^0.97.8"
   }
 }
