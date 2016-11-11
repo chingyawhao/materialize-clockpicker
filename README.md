@@ -22,7 +22,8 @@ ampmclickable: false,  // set am/pm button on itself
 darktheme: false,      // set to dark theme
 twelvehour: true,      // change to 12 hour AM/PM clock from 24 hour
 vibrate: true,         // vibrate the device when dragging clock hand
-container: ''          // default will append clock next to input
+container: '',          // default will append clock next to input
+submit:''               // hora completa en formato 24h
 ```
 
 ## Screenshots:
@@ -56,13 +57,37 @@ gulp watch
   </div>
   ```
 
+3. Agregar valores por defecto al input
+
+  ```
+  <div class="input-field col s12">
+      <label for="timepicker">Time</label>
+      <input id="timepicker" data-default="14:20:00" class="timepicker" type="time">
+  </div>
+  ```
+
 4. Add the Javascript trigger with the corresponding [options](https://github.com/chingyawhao/materialize-clockpicker#options)
 
   ```
   <script>
     $('#timepicker').pickatime({
       autoclose: false,
-      twelvehour: false
+      twelvehour: false,
+      default: '14:20:00'
+    });
+  </script>
+  ```
+
+5. Obtener la hora seleccionada y el elemento que ha sido manipulado
+
+  ```
+  <script>
+    $('#timepicker').pickatime({
+      autoclose: false,
+      twelvehour: false,
+      afterDone: function(Element, Time) {
+          console.log(Element, Time);
+      }
     });
   </script>
   ```
