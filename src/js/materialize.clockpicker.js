@@ -221,6 +221,8 @@
 
 			// If autoclose is not setted, append a button
 		$('<button type="button" class="btn-flat clockpicker-button" tabindex="' + (options.twelvehour? '3' : '1') + '">' + options.donetext + '</button>').click($.proxy(this.done, this)).appendTo(this.footer);
+		
+		$('<button type="button" class="btn-flat clockpicker-button" tabindex="' + (options.twelvehour? '4' : '2') + '">' + options.cleartext + '</button>').click($.proxy(this.cleanClock, this)).appendTo(this.footer);
 
 		this.spanHours.click($.proxy(this.toggleView, this, 'hours'));
 		this.spanMinutes.click($.proxy(this.toggleView, this, 'minutes'));
@@ -405,7 +407,8 @@
 	ClockPicker.DEFAULTS = {
 		'default': '',         // default time, 'now' or '13:14' e.g.
 		fromnow: 0,            // set default time to * milliseconds from now (using with default = 'now')
-		donetext: 'Done',      // done button text
+		donetext: 'Done', 
+		cleartext: 'Clear',     // done button text
 		autoclose: false,      // auto close when minute is selected
 		ampmclickable: false,  // set am/pm button on itself
 		darktheme: false,		// set to dark theme
@@ -694,6 +697,13 @@
 		this.fg.setAttribute('cy', cy2);
 	};
 
+	//! CLEAN CLOCK
+	ClockPicker.prototype.cleanClock = function() {
+		this.input.val("");
+		this.hide();
+		raiseCallback(this.options.afterDone(this.input, null));
+	};
+	
 	// Hours and minutes are selected
 	ClockPicker.prototype.done = function() {
 		raiseCallback(this.options.beforeDone);
@@ -949,6 +959,8 @@
 
 			// If autoclose is not setted, append a button
 		$('<button type="button" class="btn-flat clockpicker-button" tabindex="' + (options.twelvehour? '3' : '1') + '">' + options.donetext + '</button>').click($.proxy(this.done, this)).appendTo(this.footer);
+		
+		$('<button type="button" class="btn-flat clockpicker-button" tabindex="' + (options.twelvehour? '4' : '2') + '">' + options.cleartext + '</button>').click($.proxy(this.cleanClock, this)).appendTo(this.footer);
 
 		this.spanHours.click($.proxy(this.toggleView, this, 'hours'));
 		this.spanMinutes.click($.proxy(this.toggleView, this, 'minutes'));
@@ -1456,6 +1468,7 @@
 		if(this.options.autoclose)
 			this.input.trigger('blur');
 
+			console.log( this.input, submit )
 		raiseCallback(this.options.afterDone(this.input, submit));
 	};
 
@@ -1493,7 +1506,7 @@
 			.prop({value: value})
 			.data({submit:submit})
 			.attr({value: value, 'data-submit':submit}); //forzar nuevos valores
-
+			
 		this.options.default = submit;
 
 		if(value !== last) {
@@ -1504,8 +1517,8 @@
 
 		if(this.options.autoclose)
 			this.input.trigger('blur');
-
-		raiseCallback(this.options.afterDone);
+			
+		raiseCallback(this.options.afterDone(this.input, submit));
 	};
 
 	// Remove clockpicker from input
