@@ -58,7 +58,7 @@ gulp watch
   </div>
   ```
 
-3. Add default value to the input
+4. Add default value to the input
 
   ```
   <div class="input-field col s12">
@@ -67,7 +67,7 @@ gulp watch
   </div>
   ```
 
-4. Add the Javascript trigger with the corresponding [options](https://github.com/chingyawhao/materialize-clockpicker#options)
+5. Add the Javascript trigger with the corresponding [options](https://github.com/chingyawhao/materialize-clockpicker#options)
 
   ```
   <script>
@@ -79,7 +79,7 @@ gulp watch
   </script>
   ```
 
-5. Get time slected using after done function
+6. Get time selected using after done function
 
   ```
   <script>
